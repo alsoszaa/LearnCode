@@ -1,0 +1,27 @@
+FROM debian:latest
+USER root
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y apt-utils
+RUN apt-get upgrade
+RUN apt-get install -y --no-install-recommends ca-certificates git lsb-release sudo
+RUN useradd -d /home/retropie -G sudo -m pi
+RUN echo "pi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/pi
+
+WORKDIR /home/retropie
+
+USER pi
+
+RUN git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git
+
+WORKDIR /home/retropie/RetroPie-Setup
+
+RUN sudo chmod +x retropie_setup.sh 
+RUN sudo ./retropie_packages.sh setup basic_install 
+RUN sudo rm -rf /var/lib/apt/lists/* 
+RUN sudo chown -R pi /home/retropie
+RUN sudo usermod -aG adm,dialout,cdrom,sudo,audio,video,plugdev,users,games pi
+ 
+ENTRYPOINT "/usr/bin/emulationstation"
+
+CMD "#auto"

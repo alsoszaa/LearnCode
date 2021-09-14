@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <h1>This is some text</h1>
+    </head>
+    <body>
+        <script type="text/javascript" src="libfile.js"></script>
+        <p id='p10'>This is a paragraph</p>
+        <p id='p11'>This is a second paragraph</p>
+        <button type='button' onmouseover="document.getElementById('p10').innerHTML='HelloWorld!';">Hello</button>
+        <button type='button' onmouseover="document.getElementById('p11').innerHTML='This is JavaScript!';">JavaScript</button>
+        <br />
+        <br />
+        <h3>This is a heading</h3>
+        <div id="text">This is some text</div>
+        <button type="button" onclick="document.getElementById('photo').src = 'cat.jpg'">Show me a Cat</button>
+        <img id="photo" src="cat.jpg" style="width:300px;height:300px;">
+        <button type="button" onclick="document.getElementById('photo').src = 'dog.jpg'">Show me a Dog</button>
+        <br />
+        <br />
+        <!-- variables -->
+        <p id='p1'></p>
+        <!-- array -->
+        <p id='p2'></p>
+        <!-- if statement -->
+        <p id='p3'>value not set</p>
+        <!-- for loop -->
+        <p id='p4'>value not set</p>
+        <!-- functions (time)-->
+        <p id='time'></p>
+        <!-- functions (calc) -->
+        <input type="number" id="firstNumber"> + 
+        <input type="number" id="secondNumber">
+        <p id = 'answer'></p>
+        <button type="button" onclick="addNumbers()";>Calculate</button>
+    </body>
+</html>

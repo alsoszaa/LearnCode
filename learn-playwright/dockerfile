@@ -1,0 +1,18 @@
+FROM oraclelinux:8.4
+
+# 1. Install node12
+RUN dnf update -y && dnf install -y curl wget nodejs
+
+RUN mkdir -p /opt/playwright-browsers
+ENV PLAYWRIGHT_BROWSERS_PATH /opt/playwright-browsers/
+
+# Install Playwright and the browsers.
+COPY 00_test_playwright.js 01_basicScript.js $PLAYWRIGHT_BROWSERS_PATH
+RUN cd $PLAYWRIGHT_BROWSERS_PATH && cd $HOME
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD false
+WORKDIR /opt/playwright-browsers
+
+RUN npm init --yes
+RUN npm i -D playwright
+RUN npx playwright install
+RUN npm ci

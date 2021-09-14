@@ -1,0 +1,4 @@
+FROM oraclelinux:8.4
+
+# 1. Install node12
+RUN dnf update -y && dnf install -y curl && dnf install -y nodejs
