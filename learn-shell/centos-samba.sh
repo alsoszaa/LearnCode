@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#Rename host, add user and set user admin
+hostnamectl set-hostname centfs
+useradd -m -p CisXer5509 alsoszaa
+usermod -aG wheel alsoszaa
+
 #Install Samba and allow in firewall:
 dnf install samba samba-client
 systemctl enable --now {smb,nmb}
