@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# For VirtualBox Guest Additions you need this:
+#dnf install epel-release -y
+#dnf install gcc make perl kernel-devel kernel-headers bzip2 dkms -y
+#dnf update kernel-* -y
+
 #Rename host, add user and set user admin
 hostnamectl set-hostname centfs
 useradd -m -p CisXer5509 alsoszaa
